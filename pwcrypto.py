@@ -1,3 +1,8 @@
+# Fix for Python 3.13 (Render removing imghdr)
+import sys, types
+if sys.version_info >= (3, 13):
+    sys.modules["imghdr"] = types.ModuleType("imghdr")
+
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, CallbackQueryHandler
 import re, random, string
